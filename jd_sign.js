@@ -56,8 +56,15 @@ function sendNotificationIfNeed() {
   if (!fs.existsSync(result_path)) {
     console.log('没有执行结果，任务中断!'); return;
   }
-
-  let text = "京东签到_" + new Date().Format('yyyy.MM.(dd+1)');
+function dateFormat() {
+  var timezone = 8;
+  var GMT_offset = new Date().getTimezoneOffset();
+  var n_Date = new Date().getTime();
+  var t_Date = new Date(n_Date + GMT_offset * 60 * 1000 + timezone * 60 * 60 * 1000);
+  console.log(t_Date)
+  return t_Date.Format('yyyy.MM.dd')
+}
+  let text = "京东签到_" + dateFormat();
   let desp = fs.readFileSync(result_path, "utf8")
 
   // 去除末尾的换行
