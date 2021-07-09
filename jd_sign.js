@@ -78,7 +78,7 @@ function dateFormat() {
   }
 
   rp.post(options).then(res=>{
-    const code = res['errno'];
+    const code = res['data']['errno'];
     if (code == 0) {
       console.log("通知发送成功，任务结束！")
     }
